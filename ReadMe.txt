@@ -1,1 +1,1 @@
-This Program is written to create an event scheduler
+This Program is written to create an event scheduler for a grandma
