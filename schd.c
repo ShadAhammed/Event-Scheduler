@@ -1,4 +1,4 @@
-//This program is created by Shad Ahammed to create an agenda for a grandma
+//This program is created by Shad Ahammed to create an agenda for motor testing schedule
 //Program will be active when a schedule task begins, 10 minutes before its finishing time, when a time is inserted to check
 //The program has 2 modes
 //In silent mode program will automatically give output when a scheduled task start
@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
-//#include <conio.h>
+#include <conio.h>
 
 time_t now;
 struct tm *rightnow;
@@ -32,14 +32,14 @@ int activity1ID, activity2ID, activity3ID,activity4ID,activity5ID,activity6ID,ac
 int CheckDone1ID, CheckDone2ID, CheckDone3ID,CheckDone4ID,CheckDone5ID,CheckDone6ID,CheckDone7ID,CheckDone8ID,CheckDone9ID;
 
 //Prototype functions
-int BreakfastCheck();
-int DaySugarTestCheck();
-int ShoppingCheck();
-int LunchCheck();
-int ExerciseTimeCheck();
-int TvshowCheck();
-int DinnerCheck();
-int MedicineCheck();
+int MorningCheck();
+int MorningCheck2();
+int MorningCheck3();
+int AfternoonCheck();
+int AfternoonCheck2();
+int EveningCheck();
+int NightCheck();
+int FinalCheck();
 int DayEnd();
 void activityDone();
 void DayFinish();
@@ -71,11 +71,11 @@ int main()
 
         //Start checking the schedule
 
-        //Checking Breakfast schedule
+        //Checking Morning check schedule
 
         if(hour == HourStartSchedule[0] && min == MinuteStartSchedule[0] && activity1ID != 1 && CheckDone1ID !=1)
         {
-            BreakfastCheck();
+            MorningCheck();
 
             if (activity1ID == 1)
             {
@@ -83,14 +83,14 @@ int main()
             }
             else
             {
-                printf("Your breakfast is pending\n");
+                printf("Your MorningCheck is pending\n");
             }
             CheckDone1ID =1;
         }
 
         else if( ((HourEndSchedule[0]-hour)*3600 + (MinuteEndSchedule[0] - min)*60) == 600 && activity1ID != 1 && CheckDone1ID !=2)
         {
-            printf("Only 10 minutes remaining for breakfast\n");
+            printf("Only 10 minutes remaining for morning check\n");
             CheckDone1ID = 2;
         }
 
@@ -98,7 +98,7 @@ int main()
 
         if(hour == HourStartSchedule[1] && min == MinuteStartSchedule[1] && activity2ID != 1 && CheckDone2ID != 1)
         {
-            DaySugarTestCheck();
+            MorningCheck2();
 
             if (activity2ID == 1)
             {
@@ -106,14 +106,14 @@ int main()
             }
             else
             {
-                printf("You did not check your sugar yet\n");
+                printf("Your MorningCheck2 is pending\n");
             }
              CheckDone2ID = 1;
         }
 
         else if( ((HourEndSchedule[1]-hour)*3600 + (MinuteEndSchedule[1] - min)*60) == 600 && activity2ID != 1 && CheckDone2ID !=2)
         {
-            printf("Only 10 minutes remaining for sugar test\n");
+            printf("Only 10 minutes remaining for morning check2\n");
             CheckDone2ID = 2;
         }
 
@@ -121,7 +121,7 @@ int main()
 
         if(hour == HourStartSchedule[2] && min == MinuteStartSchedule[2] && activity3ID != 1 && CheckDone3ID != 1)
         {
-            ShoppingCheck();
+            MorningCheck3();
 
             if (activity3ID == 1)
             {
@@ -129,21 +129,21 @@ int main()
             }
             else
             {
-                printf("Your shopping is pending\n");
+                printf("Your morning check3 is pending\n");
             }
             CheckDone3ID = 1;
         }
 
         else if( ((HourEndSchedule[2]-hour)*3600 + (MinuteEndSchedule[2] - min)*60) == 600 && activity3ID != 1 && CheckDone3ID !=2)
         {
-            printf("Only 10 minutes remaining for shopping\n");
+            printf("Only 10 minutes remaining for morning check3\n");
             CheckDone3ID = 2;
         }
 
         //Checking Lunch schedule
         if(hour == HourStartSchedule[3] && min == MinuteStartSchedule[3] && activity4ID != 1 && CheckDone4ID != 1)
         {
-            LunchCheck();
+            AfternoonCheck();
 
             if (activity4ID == 1)
             {
@@ -151,21 +151,21 @@ int main()
             }
             else
             {
-                printf("Your lunch is pending\n");
+                printf("Your afternoon check is pending\n");
             }
             CheckDone4ID = 1;
         }
 
         else if( (HourEndSchedule[3]-hour)*3600 + (MinuteEndSchedule[3] - min)*60 == 600 && activity4ID != 1 && CheckDone4ID !=2)
         {
-            printf("Only 10 minutes remaining for lunch\n");
+            printf("Only 10 minutes remaining for afternoon check\n");
             CheckDone4ID = 2;
         }
 
         //Checking Exercise schedule
         if(hour == HourStartSchedule[4] && min == MinuteStartSchedule[4] && activity5ID != 1 && CheckDone5ID != 1)
         {
-            ExerciseTimeCheck();
+            AfternoonCheck2();
 
             if (activity5ID == 1)
             {
@@ -173,7 +173,7 @@ int main()
             }
             else
             {
-                printf("Your exercise for today is pending\n");
+                printf("Your afternoon check2 for today is pending\n");
             }
             CheckDone5ID = 1;
 
@@ -181,7 +181,7 @@ int main()
 
         else if( ((HourEndSchedule[4]-hour)*3600 + (MinuteEndSchedule[4] - min)*60) == 600 && activity5ID != 1 && CheckDone5ID !=2)
         {
-            printf("Only 10 minutes remaining for exercise\n");
+            printf("Only 10 minutes remaining for afternoon check2\n");
             CheckDone5ID = 2;
         }
 
@@ -189,7 +189,7 @@ int main()
 
         if(hour == HourStartSchedule[5] && min == MinuteStartSchedule[5] && activity6ID != 1 && CheckDone6ID != 1)
         {
-            TvshowCheck();
+            EveningCheck();
 
             if (activity6ID == 1)
             {
@@ -197,14 +197,14 @@ int main()
             }
             else
             {
-                printf("Your Tv show time is pending\n");
+                printf("Your evening check is pending\n");
             }
             CheckDone6ID = 1;
         }
 
         else if( ((HourEndSchedule[5]-hour)*3600 + (MinuteEndSchedule[5] - min)*60) == 600 && activity6ID != 1 && CheckDone6ID !=2)
         {
-            printf("Only 10 minutes remaining for TV show\n");
+            printf("Only 10 minutes remaining for evening check\n");
             CheckDone6ID = 2;
         }
 
@@ -212,7 +212,7 @@ int main()
 
         if(hour == HourStartSchedule[6] && min == MinuteStartSchedule[6] && activity7ID != 1 && CheckDone7ID != 1)
         {
-            DinnerCheck();
+            NightCheck();
 
             if (activity7ID == 1)
             {
@@ -220,14 +220,14 @@ int main()
             }
             else
             {
-                printf("Your dinner is pending\n");
+                printf("Your night check is pending\n");
             }
             CheckDone7ID = 1;
         }
 
         else if( ((HourEndSchedule[6]-hour)*3600 + (MinuteEndSchedule[6] - min)*60) == 600 && activity7ID != 1 && CheckDone7ID !=2)
         {
-            printf("Only 10 minutes remaining for dinner\n");
+            printf("Only 10 minutes remaining for night check\n");
             CheckDone7ID = 2;
         }
 
@@ -235,7 +235,7 @@ int main()
 
         if(hour == HourStartSchedule[7] && min == MinuteStartSchedule[7] && activity8ID != 1 && CheckDone8ID != 1)
         {
-            MedicineCheck();
+            FinalCheck();
 
             if (activity8ID == 1)
             {
@@ -243,14 +243,14 @@ int main()
             }
             else
             {
-                printf("You did not take your medicine\n");
+                printf("Your Last Check is pending\n");
             }
             CheckDone8ID = 1;
         }
 
         else if( (HourEndSchedule[7]-hour)*3600 + (MinuteEndSchedule[7] - min)*60 == 600 && activity8ID != 1 && CheckDone8ID !=2)
         {
-            printf("Only 10 minutes remaining for taking medicine\n");
+            printf("Only 10 minutes remaining for last check\n");
             CheckDone8ID = 2;
         }
         else if(hour == HourStartSchedule[8] && min == MinuteStartSchedule[8] && activity9ID != 1)
@@ -287,20 +287,20 @@ void activityDone()
     printf("Your next schedule will start after %d minutes\n\n\n", remainTime);
     printf("Please press any key+ ENTER to go to schedule checker\n");
 }
-int BreakfastCheck()
+int MorningCheck()
 {
-    printf("Breakfast Time! Please press y if you want have it now : ");
+    printf("Morning check Time! Please press y if you want have it now : ");
     scanf("%s",&answer);
 
     if (answer == 'y')
     {
-        printf("Status of this Breakfast activity is DONE\n");
+        printf("Status of this Morning check activity is DONE\n");
         goto done;
     }
 
     else
     {
-        printf("Status of this Breakfast activity is UNDONE\n");
+        printf("Status of this Morning check activity is UNDONE\n");
         goto undone;
     }
 
@@ -311,20 +311,20 @@ int BreakfastCheck()
         activity1ID = 0;
         return activity1ID;
 }
-int DaySugarTestCheck()
+int MorningCheck2()
 {
-    printf("Sugar checking Time! Please press y if you want have it now : ");
+    printf("Morning check2 Time! Please press y if you want have it now : ");
     scanf("%s",&answer);
 
     if (answer == 'y')
     {
-        printf("Status of this sugar test activity is DONE\n");
+        printf("Status of this morning check2 activity is DONE\n");
         goto done;
     }
 
     else
     {
-        printf("Status of this sugar test activity is UNDONE\n");
+        printf("Status of this morning check2 activity is UNDONE\n");
         goto undone;
     }
 
@@ -336,20 +336,20 @@ int DaySugarTestCheck()
         return activity2ID;
 }
 
-int ShoppingCheck()
+int MorningCheck3()
 {
-    printf("Shopping Time! Please press y if you want have it now : ");
+    printf("Morning check3 time! Please press y if you want have it now : ");
     scanf("%s",&answer);
 
     if (answer == 'y')
     {
-        printf("Status of this shop time activity is DONE\n");
+        printf("Status of this Morning check3 activity is DONE\n");
         goto done;
     }
 
     else
     {
-        printf("Status of this shop time activity is UNDONE\n");
+        printf("Status of this Morning check3 activity is UNDONE\n");
         goto undone;
     }
 
@@ -360,18 +360,18 @@ int ShoppingCheck()
         activity3ID = 0;
         return activity3ID;
 }
-int LunchCheck()
+int AfternoonCheck()
 {
-    printf("Lunch Time! Please press y if you want have it now : ");
+    printf("Afternoon Check Time! Please press y if you want have it now : ");
     scanf("%s",&answer);
     if (answer == 'y')
     {
-        printf("Status of this lunch activity is DONE\n");
+        printf("Status of this afternoon check activity is DONE\n");
         goto done;
     }
     else
     {
-        printf("Status of this lunch activity is UNDONE\n");
+        printf("Status of this afternoon check activity is UNDONE\n");
         goto undone;
     }
     done:
@@ -382,20 +382,20 @@ int LunchCheck()
         return activity4ID;
 }
 
-int ExerciseTimeCheck()
+int AfternoonCheck2()
 {
-    printf("Exercise Time! Please press y if you want have it now : ");
+    printf("Afternoon Check2 Time! Please press y if you want have it now : ");
     scanf("%s",&answer);
 
     if (answer == 'y')
     {
-        printf("Status of this exercise activity is DONE\n");
+        printf("Status of this Afternoon Check2 activity is DONE\n");
         goto done;
     }
 
     else
     {
-        printf("Status of this exercise activity is UNDONE\n");
+        printf("Status of this Afternoon Check2 activity is UNDONE\n");
         goto undone;
     }
 
@@ -407,20 +407,20 @@ int ExerciseTimeCheck()
         return activity5ID;
 }
 
-int TvshowCheck()
+int EveningCheck()
 {
-    printf("Tvshow Time! Please press y if you want have it now : ");
+    printf("Evening Time! Please press y if you want have it now : ");
     scanf("%s",&answer);
 
     if (answer == 'y')
     {
-        printf("Status of this tv show activity is DONE\n");
+        printf("Status of this evening activity is DONE\n");
         goto done;
     }
 
     else
     {
-        printf("Status of this tv show activity is UNDONE\n");
+        printf("Status of this evening activity is UNDONE\n");
         goto undone;
     }
 
@@ -432,20 +432,20 @@ int TvshowCheck()
         return activity6ID;
 }
 
-int DinnerCheck()
+int NightCheck()
 {
-    printf("Dinner Time! Please press y if you want have it now : ");
+    printf("Night Check Time! Please press y if you want have it now : ");
     scanf("%s",&answer);
 
     if (answer == 'y')
     {
-        printf("Status of this dinner activity is DONE\n");
+        printf("Status of this night check activity is DONE\n");
         goto done;
     }
 
     else
     {
-        printf("Status of this dinner activity is UNDONE\n");
+        printf("Status of this night check activity is UNDONE\n");
         goto undone;
     }
 
@@ -457,20 +457,20 @@ int DinnerCheck()
         return activity7ID;
 }
 
-int MedicineCheck()
+int FinalCheck()
 {
-    printf("Medicine Time! Please press y if you want have it now : ");
+    printf("Last check Time! Please press y if you want have it now : ");
     scanf("%s",&answer);
 
     if (answer == 'y')
     {
-        printf("Status of this medicine check activity is DONE\n");
+        printf("Status of this last check activity is DONE\n");
         goto done;
     }
 
     else
     {
-        printf("Status of this medicine check activity is UNDONE\n");
+        printf("Status of this last check activity is UNDONE\n");
         goto undone;
     }
 
@@ -535,112 +535,112 @@ void CheckSchedule()
         scanf("%d",&m);
         if (abs( (h - HourStartSchedule[0])*60 + (m - MinuteStartSchedule[0]) ) <= TimeThreshold)
         {
-            printf("This schedule belongs to your breakfast task\n");
+            printf("This schedule belongs to your Morning check task\n");
             if (activity1ID == 0)
             {
                 delay(3);
-                BreakfastCheck();
+                MorningCheck();
             }
             else
             {
-                printf("You did your breakfast already\n");
+                printf("You did your Morning check already\n");
             }
         }
         else if (abs( (h - HourStartSchedule[1])*60 + (m - MinuteStartSchedule[1]) ) <= TimeThreshold)
         {
-            printf("This schedule belongs to your sugar test task\n");
+            printf("This schedule belongs to your Morning check2 task\n");
             if (activity2ID == 0)
             {
                 delay(3);
-                DaySugarTestCheck();
+                MorningCheck2();
             }
             else
             {
-                printf("You did your sugar test already\n");
+                printf("You did your morning check2 already\n");
             }
         }
 
         else if (abs( (h - HourStartSchedule[2])*60 + (m - MinuteStartSchedule[2]) ) <= TimeThreshold)
         {
-            printf("This schedule belongs to your shopping task\n");
+            printf("This schedule belongs to your morning check3 task\n");
             if (activity3ID == 0)
             {
                 delay(3);
-                ShoppingCheck();
+                MorningCheck3();
             }
             else
             {
-                printf("You did your shopping already\n");
+                printf("You did your morning check3 already\n");
             }
         }
 
         else if (abs((h - HourStartSchedule[3])*60 + (m - MinuteStartSchedule[3])) <= TimeThreshold)
         {
-            printf("This schedule belongs to your lunch task\n");
+            printf("This schedule belongs to your afternoon check task\n");
             if (activity4ID == 0)
             {
                 delay(3);
-                LunchCheck();
+                AfternoonCheck();
             }
             else
             {
-                printf("You did your lunch already\n");
+                printf("You did your afternoon check already\n");
             }
         }
 
         else if ( abs((h - HourStartSchedule[4])*60 + (m - MinuteStartSchedule[4] )) <= TimeThreshold)
         {
-            printf("This schedule belongs to your exercise task\n");
+            printf("This schedule belongs to afternoon check2 task\n");
             if (activity5ID == 0)
             {
                 delay(3);
-                ExerciseTimeCheck();
+                AfternoonCheck2();
             }
             else
             {
-                printf("You did your exercise already\n");
+                printf("You did your afternoon check2 already\n");
             }
         }
 
         else if (abs((h - HourStartSchedule[5])*60 + (m - MinuteStartSchedule[5])) <= TimeThreshold)
         {
-            printf("This schedule belongs to your tv show task\n");
+            printf("This schedule belongs to your evening task\n");
             if (activity6ID == 0)
             {
                 delay(3);
-                TvshowCheck();
+                EveningCheck();
             }
             else
             {
-                printf("You are watching your tv show already\n");
+                printf("You are watching your evening task already\n");
             }
         }
 
         else if (abs((h - HourStartSchedule[6])*60 + (m - MinuteStartSchedule[6])) <= TimeThreshold)
         {
-            printf("This schedule belongs to your dinner task\n");
+            printf("This schedule belongs to your night task\n");
             if (activity7ID == 0)
             {
                 delay(3);
-                DinnerCheck();
+                NightCheck();
             }
             else
             {
-                printf("You did your dinner already\n");
+                printf("You did your night task already\n");
             }
         }
 
         else if (abs((h - HourStartSchedule[7])*60 + (m - MinuteStartSchedule[7])) <= TimeThreshold)
         {
-            printf("This schedule belongs to your medicine taking task\n");
+            printf("This schedule belongs to your last check task\n");
             if (activity8ID == 0)
             {
                 delay(3);
-                MedicineCheck();
+                FinalCheck();
             }
             else
             {
-                printf("You took your medicine already\n");
+                printf("You took your last check already\n");
             }
         }
         else
